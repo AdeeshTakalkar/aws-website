@@ -75,6 +75,28 @@ def AddStud():
     print("all modification done...")
     return render_template('AddStudOutput.html', name=stud_name)
 
+@app.route("/getstud", methods=['GET'])
+def GetStud():
+    stud_id = request.args.get('stud_id')
+
+    select_sql = "SELECT * FROM students WHERE stud_id = %s"
+    cursor = db_conn.cursor()
+
+    try:
+        cursor.execute(select_sql, (stud_id,))
+        student = cursor.fetchone()
+        if student:
+            # Extract student information from the database
+            stud_id, fname, lname, contact, address = student
+            return render_template('GetStud.html', stud_id=stud_id, fname=fname, lname=lname, contact=contact, address=address)
+        else:
+            return "Student not found"
+
+    except Exception as e:
+        return str(e)
+
+    finally:
+        cursor.close()
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
