@@ -77,6 +77,7 @@ def AddStud():
 
 @app.route("/getstud", methods=['GET','POST'])
 def GetStud():
+    render_template('GetStud.html');
     stud_id = request.args.get('stud_id')
 
     select_sql = "SELECT * FROM students WHERE stud_id = %s"
