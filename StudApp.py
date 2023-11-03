@@ -75,7 +75,7 @@ def AddStud():
     print("all modification done...")
     return render_template('AddStudOutput.html', name=stud_name)
 
-@app.route("/getstud", methods=['GET'])
+@app.route("/getstud", methods=['GET','POST'])
 def GetStud():
     stud_id = request.args.get('stud_id')
 
