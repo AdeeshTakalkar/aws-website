@@ -1,0 +1,6 @@
+customhost = "student.cleras0kpbgx.eu-north-1.rds.amazonaws.com"
+customuser = "erp"
+custompass = "student.123"
+customdb = "student"
+custombucket = "addstudents"
+customregion = "us-east-2"
