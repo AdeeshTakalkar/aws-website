@@ -88,7 +88,7 @@ def GetStud():
         if student:
             # Extract student information from the database
             stud_id, fname, lname, contact, address = student
-            return render_template('GetStud.html', stud_id=stud_id, fname=fname, lname=lname, contact=contact, address=address)
+            return render_template('GetStud.html', id=stud_id, fname=fname, lname=lname, contact=contact, address=address)
         else:
             return "Student not found"
 
