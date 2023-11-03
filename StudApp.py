@@ -19,12 +19,11 @@ db_conn = connections.Connection(
 )
 output = {}
 table = 'students'
-
+    
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
     return render_template('AddStud.html')
-
 
 @app.route("/addstud", methods=['POST'])
 def AddStud():
@@ -77,9 +76,7 @@ def AddStud():
 
 @app.route("/getstud", methods=['GET','POST'])
 def GetStud():
-    render_template('GetStud.html');
     stud_id = request.form['stud_id']
-
     select_sql = "SELECT * FROM students WHERE stud_id = %s"
     cursor = db_conn.cursor()
 
@@ -98,6 +95,6 @@ def GetStud():
 
     finally:
         cursor.close()
-
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
